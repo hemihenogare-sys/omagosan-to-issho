@@ -7,7 +7,7 @@
 <meta name="description" content="おまごさんと、お友だちになって。生前贈与を運用して、いっしょに遊べる体験を。大丸有みらいチャレンジ2026 三井物産Cチームの提案用ページです。">
 <meta property="og:title" content="おまごさんといっしょ。">
 <meta property="og:description" content="おまごさんと、お友だちになって。あの頃みたいに、遊びませんか。">
-<meta property="og:image" content="photos/hero.jpg">
+<meta property="og:image" content="hero.jpg">
 <meta name="theme-color" content="#0B0B0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +175,7 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 <header class="top"><div class="wrap"><a class="logo" href="#">おまごさんといっしょ。</a><nav><a href="#stories">体験</a><a href="#search">さがす</a><a href="#how">しくみ</a></nav></div></header>
 
 <section class="hero">
-  <img src="photos/hero.jpg" alt="おばあちゃんとおまごさんが、顔を寄せ合って笑っている">
+  <img src="hero.jpg" alt="おばあちゃんとおまごさんが、顔を寄せ合って笑っている">
   <div class="wrap">
     <p class="kicker">〜 楽しく、生前贈与 〜</p>
     <h1><span>おまごさんと、</span><span>お友だちになって。</span><span>あの頃みたいに、</span><span>遊びませんか。</span></h1>
@@ -241,7 +241,7 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 <script>
 var YIELD = 4, PERK = 2; // 想定利回り年4%のうち、年2%分を体験の特典に（イメージ）
 var PHOTOS = {
-  // すべて画像生成AIで作ったイメージ（photos/ にないものは文字の枠で表示）
+  // すべて画像生成AIで作ったイメージ（ にないものは文字の枠で表示）
   hero:{f:'hero.jpg', ai:true},
   laugh:{f:'laugh.jpg', ai:true},
   slide:{f:'slide.jpg', ai:true, wide:true},
@@ -287,10 +287,10 @@ function find(id){ for(var i=0;i<EXP.length;i++) if(EXP[i].id===id) return EXP[i
 function photo(e, cls, voice){
   if(!e.ph) return '<div class="ph text '+(cls||'')+'"><span>'+esc(e.v)+'</span></div>';
   var p=PHOTOS[e.ph];
-  return '<div class="ph '+(cls||'')+(p.wide&&cls!=='card'?' wide':'')+'"><img src="photos/'+p.f+'" alt="'+esc(e.t)+'のイメージ写真" loading="lazy">'+(voice?'<span class="voice">'+esc(e.v)+'</span>':'')+'</div>';
+  return '<div class="ph '+(cls||'')+(p.wide&&cls!=='card'?' wide':'')+'"><img src="'+p.f+'" alt="'+esc(e.t)+'のイメージ写真" loading="lazy">'+(voice?'<span class="voice">'+esc(e.v)+'</span>':'')+'</div>';
 }
 
-// photos/ に置かれていない画像は、文字の枠で表示する
+//  に置かれていない画像は、文字の枠で表示する
 function boot(){
   var pending = EXP.filter(function(e){ return e.ph && PHOTOS[e.ph].ai; });
   var left = pending.length;
@@ -299,7 +299,7 @@ function boot(){
     var im = new Image();
     im.onload = function(){ if(--left===0) render(); };
     im.onerror = function(){ e.ph = null; if(--left===0) render(); };
-    im.src = 'photos/'+PHOTOS[e.ph].f;
+    im.src = ''+PHOTOS[e.ph].f;
   });
 }
 function render(){
