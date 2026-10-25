@@ -173,8 +173,7 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 .sticky{transition:opacity .25s, transform .25s}
 .sticky.off{opacity:0;transform:translateY(100%);pointer-events:none}
 footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
-.amount{background:var(--navy);color:#fff;border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:4px}
-.amount span{color:rgba(255,255,255,.8)!important}
+.amount{border:1px solid var(--warm);background:var(--warm-soft);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:4px}
 .amount span{font-size:13px;color:var(--sub)}
 .amount b{font-family:var(--mincho);font-size:44px;line-height:1.2}
 .amount b small{font-size:20px}
@@ -259,7 +258,7 @@ footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
   <ul id="credits"></ul>
 </div></footer>
 
-<dialog id="dlg" class="light" aria-labelledby="dlgTitle"></dialog>
+<dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
 <div class="sticky off" id="sticky"><a class="pill" href="#search">金額から、体験をさがす</a></div>
 
 <script>
