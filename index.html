@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>おまごさんといっしょ。</title>
+<meta name="description" content="おまごさんと、お友だちになって。生前贈与を運用して、いっしょに遊べる体験を。大丸有みらいチャレンジ2026 三井物産Cチームの提案用ページです。">
+<meta property="og:title" content="おまごさんといっしょ。">
+<meta property="og:description" content="おまごさんと、お友だちになって。あの頃みたいに、遊びませんか。">
+<meta property="og:image" content="photos/hero.jpg">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: 黒い夜の画面に、写真と白い明朝体。ヒーロー（全面写真）→ 短い時間の話 → 体験の写真を左右交互に → 金額と体験でさがす → しくみ → 注記とクレジット */
+:root{
+  --bg:#0B0B0C; --bg2:#141416; --ink:#F6F3EE; --sub:#B9B4AC; --line:#2B2A2D;
+  --warm:#F2B866; --warm-soft:#2A2117; --red:#E5484D;
+  --mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --gothic:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--gothic);font-size:16px;line-height:1.85}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--mincho);font-weight:800;margin:0;text-wrap:balance;letter-spacing:.04em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.yen{font-variant-numeric:tabular-nums}
+
+/* header */
+.top{position:absolute;inset:0 0 auto;z-index:5;padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.logo{font-family:var(--mincho);font-weight:800;font-size:17px;letter-spacing:.08em;text-decoration:none}
+.top nav{display:flex;gap:18px;font-size:13px}
+.top nav a{text-decoration:none;color:var(--sub)}
+.top nav a:hover{color:var(--ink)}
+@media (max-width:560px){.top nav{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(100svh,880px);display:flex;align-items:flex-end;overflow:hidden;background:#000}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 38%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 48%,rgba(0,0,0,.05) 75%),linear-gradient(0deg,var(--bg) 0%,rgba(11,11,12,0) 30%)}
+@media (max-width:700px){.hero img{object-position:80% 35%}.hero::after{background:linear-gradient(0deg,var(--bg) 6%,rgba(0,0,0,.7) 46%,rgba(0,0,0,.1) 80%)}}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-block:120px 72px}
+.hero .kicker{font-size:13px;letter-spacing:.24em;color:var(--warm);margin-bottom:22px;font-weight:700}
+.hero h1{font-size:clamp(34px,6.4vw,72px);line-height:1.45;font-weight:800}
+.hero h1 span{display:block}
+.hero .lead{margin-top:26px;max-width:30em;color:#E9E4DC;font-size:clamp(15px,1.6vw,17px)}
+.hero .cta{margin-top:30px;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.6);padding:12px 22px;border-radius:99px;text-decoration:none;font-weight:700;font-size:15px}
+.hero .cta:hover{background:rgba(255,255,255,.1)}
+
+/* time */
+.time{padding-block:96px 40px;text-align:center}
+.time p.big{font-family:var(--mincho);font-weight:700;font-size:clamp(22px,3.6vw,36px);line-height:1.8}
+.time p.big em{font-style:normal;color:var(--warm)}
+.nb{display:inline-block}
+.time p.small{margin-top:22px;color:var(--sub);font-size:15px}
+.years{display:flex;justify-content:center;gap:clamp(6px,2vw,16px);margin-top:36px}
+.years span{width:clamp(46px,11vw,72px);aspect-ratio:1;border-radius:50%;border:1px solid var(--warm);display:flex;align-items:center;justify-content:center;font-family:var(--mincho);font-weight:700;color:var(--warm);font-size:clamp(13px,2.4vw,17px)}
+
+/* stories */
+.sec-h{display:flex;flex-direction:column;gap:10px;padding-block:64px 36px}
+.sec-h .eyebrow{font-size:12px;letter-spacing:.24em;color:var(--warm);font-weight:700}
+.sec-h h2{font-size:clamp(26px,4vw,40px);line-height:1.5}
+.sec-h p{color:var(--sub);max-width:36em}
+.stories{display:flex;flex-direction:column;gap:clamp(56px,9vw,110px);padding-bottom:40px}
+.story{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.story:nth-child(even) .ph{order:2}
+@media (max-width:760px){.story{grid-template-columns:1fr}.story:nth-child(even) .ph{order:0}}
+.ph{position:relative;border-radius:6px;overflow:hidden;background:var(--bg2);aspect-ratio:4/5;max-width:100%}
+.ph.wide{aspect-ratio:4/3}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.story:hover .ph img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.ph img{transition:none}.story:hover .ph img{transform:none}}
+.ph .voice{position:absolute;left:16px;bottom:16px;right:16px;font-family:var(--mincho);font-weight:800;font-size:clamp(18px,2.6vw,24px);text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.st{display:flex;flex-direction:column;gap:14px;min-width:0}
+.st .who{font-size:12.5px;letter-spacing:.14em;color:var(--warm);font-weight:700}
+.st h3{font-size:clamp(24px,3.4vw,34px);line-height:1.5}
+.st p{color:#DCD6CD}
+.st .price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.st .price b{font-family:var(--mincho);font-size:30px;font-weight:800}
+.st .price span{color:var(--sub);font-size:14px}
+.more{align-self:flex-start;border:1px solid rgba(255,255,255,.5);background:none;border-radius:99px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer}
+.more:hover{background:rgba(255,255,255,.08)}
+
+/* search */
+.search{background:var(--bg2);padding-bottom:80px;margin-top:60px}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.box .lab{font-weight:700;font-size:14px}
+.budget{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.budget output{font-family:var(--mincho);font-weight:800;font-size:34px}
+.budget small{color:var(--sub);font-size:13px}
+input[type=range]{width:100%;accent-color:var(--warm);height:30px}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:none;border-radius:99px;padding:7px 14px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.kw{width:100%;font:inherit;border:1px solid var(--line);background:var(--bg2);color:var(--ink);border-radius:8px;padding:10px 12px}
+.res-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-block:28px 14px;flex-wrap:wrap}
+.res-head b{font-family:var(--mincho);font-size:22px}
+.sort{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:6px 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{border:0;padding:0;background:none;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px}
+.card .ph{aspect-ratio:4/3}
+.card .ph.text{display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle at 30% 20%,#2A2622,#121214);text-align:center}
+.card .ph.text span{font-family:var(--mincho);font-weight:800;font-size:20px;line-height:1.6;color:var(--warm)}
+.card h3{font-size:18px;line-height:1.5}
+.card .meta{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--sub)}
+.card .meta b{color:var(--ink);font-size:15px}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:28px;text-align:center;color:var(--sub)}
+
+/* how */
+.how{padding-bottom:80px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.step{border-top:1px solid var(--warm);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.step .n{font-family:var(--mincho);font-weight:800;color:var(--warm);font-size:14px;letter-spacing:.1em}
+.step h3{font-size:19px}
+.step p{color:var(--sub);font-size:14.5px}
+.split{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.split div{padding:18px;display:flex;flex-direction:column;gap:4px}
+.split div+div{background:var(--warm-soft);border-left:1px solid var(--line)}
+.split b{font-family:var(--mincho);font-size:26px}
+.split span{color:var(--sub);font-size:13.5px}
+.tbl{overflow-x:auto;margin-top:16px}
+table{border-collapse:collapse;width:100%;min-width:420px;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left}
+th{color:var(--sub);font-weight:500;font-size:13px}
+td.r{text-align:right}
+
+/* foot */
+footer{border-top:1px solid var(--line);padding-block:40px calc(40px + env(safe-area-inset-bottom,0px));color:var(--sub);font-size:13px;line-height:1.9}
+footer .wrap{display:flex;flex-direction:column;gap:14px}
+footer h2{font-size:15px;color:var(--ink);letter-spacing:.08em}
+footer ul{margin:0;padding-left:1.1em}
+
+/* detail dialog */
+dialog{border:0;padding:0;background:var(--bg);color:var(--ink);width:min(720px,100%);max-height:100%;height:100%;margin:0 0 0 auto;max-width:100%}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+@media (min-width:761px){dialog{height:auto;max-height:92vh;margin:auto;border-radius:10px;border:1px solid var(--line)}}
+.dlg{display:flex;flex-direction:column;gap:22px;padding:0 0 calc(32px + env(safe-area-inset-bottom,0px))}
+.dlg .ph{border-radius:0;aspect-ratio:16/10}
+.dlg .ph.text{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#2A2622,#121214)}
+.dlg .ph.text span{font-family:var(--mincho);font-weight:800;font-size:28px;color:var(--warm)}
+.dlg .in{padding-inline:max(22px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:18px}
+.close{position:sticky;top:0;margin-left:auto;z-index:3;border:0;background:rgba(0,0,0,.55);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;margin-top:calc(10px + env(safe-area-inset-top,0px));margin-right:max(10px,env(safe-area-inset-right,0px));margin-bottom:-54px}
+.dlg h2{font-size:clamp(24px,5vw,32px);line-height:1.5}
+.dlg .voice{font-family:var(--mincho);font-size:19px;color:var(--warm);font-weight:700}
+.amount{border:1px solid var(--warm);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:4px}
+.amount span{font-size:13px;color:var(--sub)}
+.amount b{font-family:var(--mincho);font-size:44px;line-height:1.2}
+.amount b small{font-size:20px}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.flow div{border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.flow div.hl{border-color:var(--warm);background:var(--warm-soft)}
+.flow span{font-size:12px;color:var(--sub)}
+.flow b{font-family:var(--mincho);font-size:20px}
+.flow em{font-style:normal;font-size:12px;color:var(--sub)}
+.dlg h3{font-size:18px}
+.dlg p.note{font-size:13px;color:var(--sub)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><a class="logo" href="#">おまごさんといっしょ。</a><nav><a href="#stories">体験</a><a href="#search">さがす</a><a href="#how">しくみ</a></nav></div></header>
+
+<section class="hero">
+  <img src="photos/hero.jpg" alt="おばあちゃんとおまごさんが、顔を寄せ合って笑っている">
+  <div class="wrap">
+    <p class="kicker">〜 楽しく、生前贈与 〜</p>
+    <h1><span>おまごさんと、</span><span>お友だちになって。</span><span>あの頃みたいに、</span><span>遊びませんか。</span></h1>
+    <p class="lead">おまごさんに渡す生前贈与を、実物資産で運用。<br>その運用から、いっしょに遊べる体験が毎年届きます。</p>
+    <a class="cta" href="#stories">どんな体験があるか見る ↓</a>
+  </div>
+</section>
+
+<section class="time"><div class="wrap">
+  <p class="big"><span class="nb">いっしょに、</span><span class="nb">はしゃいでくれる時間は</span><br><span class="nb">思っているより、</span><span class="nb">ずっと<em>短い</em>。</span></p>
+  <p class="small">5歳から10歳。手をつないで、同じ目線で笑い合える「ゴールデンタイム」は、だいたい5年です。</p>
+  <div class="years" aria-hidden="true"><span>5歳</span><span>6歳</span><span>7歳</span><span>8歳</span><span>9歳</span></div>
+</div></section>
+
+<section id="stories"><div class="wrap">
+  <div class="sec-h"><span class="eyebrow">EXPERIENCES</span><h2>「孫として」じゃなく、<br>「友だちとして」遊ぶ。</h2><p>わたしたちが「自分がおばあちゃんだったら、孫とこれがしたい」「孫として、おばあちゃんとこれがしたかった」と出し合った体験です。</p></div>
+  <div class="stories" id="storyList"></div>
+</div></section>
+
+<section class="search" id="search"><div class="wrap">
+  <div class="sec-h"><span class="eyebrow">SEARCH</span><h2>金額から、体験からさがす</h2><p>おまごさん1人に、今年いくら贈与するか。それで、どんな体験の特典が届くかがわかります。</p></div>
+  <div class="panel">
+    <div class="box">
+      <label class="lab" for="budget">今年、おまごさん1人に贈与する額</label>
+      <div class="budget"><output id="bout" class="yen" for="budget">110万円</output><small id="bperk">毎年の特典 約22,000円分</small></div>
+      <input type="range" id="budget" min="10" max="110" step="10" value="110" aria-describedby="bperk">
+      <div class="scale"><span>10万円</span><span>60万円</span><span>110万円</span></div>
+    </div>
+    <div class="box">
+      <span class="lab">体験のジャンル</span><div class="chips" id="cats"></div>
+      <span class="lab">だれの「やりたい」？</span><div class="chips" id="whos"></div>
+      <label class="lab" for="kw">ことばでさがす</label><input class="kw" id="kw" type="search" placeholder="例：花火、海、つくる">
+    </div>
+  </div>
+  <div class="res-head"><span><b class="yen" id="count">0件</b> の体験</span><label for="sort" style="font-size:13px;color:var(--sub)">並び順 <select class="sort" id="sort"><option value="up">金額の安い順</option><option value="down">金額の高い順</option></select></label></div>
+  <div id="results"></div>
+</div></section>
+
+<section class="how" id="how"><div class="wrap">
+  <div class="sec-h"><span class="eyebrow">HOW IT WORKS</span><h2>期限があるから、今年動ける。<br>いっしょだから、楽しい。</h2></div>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><h3>毎年、贈与の約束</h3><p>おばあちゃん・おじいちゃんと、おまごさん（未成年なら親）で、その年の贈与契約を結びます。</p></div>
+    <div class="step"><span class="n">02</span><h3>おまごさん名義で運用</h3><p>贈与したお金はおまごさんのもの。ホテルや商業施設などの実物資産で運用します。</p></div>
+    <div class="step"><span class="n">03</span><h3>体験の特典が届く</h3><p>利回りの一部が、いっしょに遊べる体験の特典になって、毎年届きます。</p></div>
+    <div class="step"><span class="n">04</span><h3>いっしょに使う</h3><p>おまごさんの笑顔を見て、「役に立てた」と実感する。元本と分配は、おまごさんの将来に残ります。</p></div>
+  </div>
+  <div class="split">
+    <div><span>想定利回り 年4% のうち</span><b>年2%</b><span>分配として、おまごさんの資産に</span></div>
+    <div><span>想定利回り 年4% のうち</span><b>年2%</b><span>体験の特典として、いっしょの思い出に</span></div>
+  </div>
+  <div class="tbl"><table><thead><tr><th>今年の贈与額</th><th>分配（1年）</th><th>体験の特典（1年）</th><th>5年続けると、残る元本</th></tr></thead><tbody id="tbl"></tbody></table></div>
+</div></section>
+
+<footer><div class="wrap">
+  <h2>このページについて</h2>
+  <p>大丸有みらいチャレンジ2026 三井物産Cチーム（奥田そら・田川昂輝・丸山大輝・吉岡春陽）が、提案の説明のために作った非営利のページです。実在する商品・特典ではなく、申し込みはできません。利回り・金額・特典はすべてイメージで、元本や利回りを保証するものではありません。暦年贈与の非課税枠は、受け取る人1人あたり年110万円です。</p>
+  <h2>写真</h2>
+  <ul id="credits"></ul>
+</div></footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle"></dialog>
+
+<script>
+var YIELD = 4, PERK = 2; // 想定利回り年4%のうち、年2%分を体験の特典に（イメージ）
+var PHOTOS = {
+  // すべて画像生成AIで作ったイメージ（photos/ にないものは文字の枠で表示）
+  hero:{f:'hero.jpg', ai:true},
+  laugh:{f:'laugh.jpg', ai:true},
+  slide:{f:'slide.jpg', ai:true, wide:true},
+  garden:{f:'garden.jpg', ai:true},
+  beach:{f:'beach.jpg', ai:true},
+  selfiegp:{f:'selfie-gp.jpg', ai:true, wide:true},
+  fishing:{f:'fishing.jpg', ai:true},
+  baking:{f:'baking.jpg', ai:true, wide:true},
+  sparkler:{f:'sparkler.jpg', ai:true},
+  selfiegm:{f:'selfie-gm.jpg', ai:true, wide:true},
+  stars:{f:'stars.jpg', ai:true},
+  para:{f:'para.jpg', ai:true},
+  sports:{f:'sports.jpg', ai:true},
+  craft:{f:'craft.jpg', ai:true, wide:true},
+  gourmet:{f:'gourmet.jpg', ai:true, wide:true}
+};
+// who: g = おばあちゃん目線（同じ目線で孫とやりたいこと） / k = おまごさん目線（孫がやりたいこと）
+var EXP = [
+ {id:'bbq', t:'庭でBBQ、夜までおしゃべり', who:'k', cat:'outdoor', amt:50, ph:'laugh', v:'「ばあば、笑いすぎ〜！」', d:'火おこしは、おまごさんの担当。焼けるのを待つあいだも、ずっと笑ってる。', perk:'手ぶらBBQプラン（食材つき）の割引'},
+ {id:'park', t:'テーマパークで、いっしょにはしゃぐ', who:'k', cat:'event', amt:90, ph:'slide', v:'「ばあばも、すべろうよ！」', d:'見ているだけじゃなく、いっしょに乗る。おそろいのカチューシャで、主役はふたり。', perk:'テーマパーク入園券 2人分の割引'},
+ {id:'sea', t:'海で、つめたーい！', who:'g', cat:'travel', amt:60, ph:'beach', v:'「つめたーい！もう一回！」', d:'波打ちぎわで、何度でも。夕方は、浜辺でゆっくり語り合う。', perk:'海辺の提携ホテルの宿泊割引'},
+ {id:'festival', t:'夏祭りで、線香花火の勝負', who:'k', cat:'event', amt:40, ph:'sparkler', v:'「どっちが長く残るか、勝負ね」', d:'金魚すくいをして、花火を見上げて、最後は線香花火。夏休みの、いちばんの思い出に。', perk:'花火大会の観覧席 2人分と、浴衣レンタルの割引'},
+ {id:'picnic', t:'公園で、ピクニック', who:'k', cat:'outdoor', amt:10, ph:'garden', v:'「じいじ、こっちこっち！」', d:'シートを広げて、お弁当を半分こ。近くの公園でも、ちゃんと冒険。', perk:'ピクニックセットの貸し出しと、お弁当2人分の割引'},
+ {id:'make', t:'いっしょに、つくる', who:'g', cat:'craft', amt:20, ph:'baking', v:'「見て、うさぎの形！」', d:'お菓子づくりに、おそろいのアクセサリーづくり。つくったものを、いっしょに身につける。', perk:'お菓子・アクセサリーづくり教室のペア参加券'},
+ {id:'fishing', t:'はじめての釣り', who:'g', cat:'outdoor', amt:30, ph:'fishing', v:'「引いてる、引いてる！」', d:'釣れるまで、並んでゆっくり話せる。釣れた瞬間は、ふたりで大さわぎ。', perk:'釣り堀・海釣り公園の利用券と、道具のレンタル'},
+ {id:'japan', t:'全都道府県を、いっしょに制覇', who:'g', cat:'travel', amt:110, ph:'selfiegp', v:'「次は、どこ行く？」', d:'毎年ひとつずつ、地図をぬりつぶす。行った先で、ふたりで自撮り。', perk:'全国の提携ホテルの宿泊割引（毎年1県ずつ）'},
+ {id:'tea', t:'アフタヌーンティーで、女子会', who:'g', cat:'gourmet', amt:20, ph:'selfiegm', v:'「今日は、女子会ね」', d:'ちょっと背のびして、ホテルのお茶会へ。話題は、学校のこと、好きな人のこと。', perk:'提携ホテルのアフタヌーンティー 2人分の割引'},
+ {id:'stars', t:'星空を、いっしょに眺める', who:'k', cat:'outdoor', amt:80, ph:'stars', v:'「あれが、北極星？」', d:'星がよく見えるキャンプ場で、寝ころんで空を見上げる。', perk:'星がよく見えるグランピング施設の宿泊割引'},
+ {id:'para', t:'パラグライダーで、空から絶景', who:'g', cat:'travel', amt:110, ph:'para', v:'「ばあば、空とんでる！」', d:'地球の大きさを、いっしょに感じる。一生、話のたねになる日。', perk:'タンデムフライト体験の割引'},
+ {id:'sports', t:'スタジアムで、いっしょに応援', who:'k', cat:'event', amt:70, ph:'sports', v:'「いけー！」', d:'おじいちゃんとも、現地で。ゴールの瞬間は、ハイタッチ。', perk:'プロスポーツの観戦チケット 2人分の割引'},
+ {id:'craft', t:'伝統工芸や歴史を、教えてあげる', who:'g', cat:'craft', amt:30, ph:'craft', v:'「ばあば、先生みたい」', d:'陶芸や江戸切子の体験で、おばあちゃんが「先生」になれる日。', perk:'陶芸・江戸切子などの体験教室 ペア参加券'},
+ {id:'gourmet', t:'ご当地グルメを、半分こ', who:'g', cat:'gourmet', amt:50, ph:'gourmet', v:'「これ、半分こしよ」', d:'行った先で、いちばんおいしいものを。ふたりで食べると、もっとおいしい。', perk:'提携ホテルに泊まったときの、ご当地グルメ券'}
+];
+var CATS = {travel:'旅行・おでかけ', outdoor:'自然・アウトドア', craft:'つくる・学ぶ', gourmet:'グルメ', event:'イベント・あそび'};
+var WHO = {g:'おばあちゃんの「やりたい」', k:'おまごさんの「やりたい」'};
+
+function man(n){ return n+'万円'; }
+function perk(n){ return Math.round(n*10000*PERK/100); }
+function div(n){ return Math.round(n*10000*(YIELD-PERK)/100); }
+function fmt(n){ return n.toLocaleString('ja-JP'); }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function find(id){ for(var i=0;i<EXP.length;i++) if(EXP[i].id===id) return EXP[i]; }
+function photo(e, cls, voice){
+  if(!e.ph) return '<div class="ph text '+(cls||'')+'"><span>'+esc(e.v)+'</span></div>';
+  var p=PHOTOS[e.ph];
+  return '<div class="ph '+(cls||'')+(p.wide&&cls!=='card'?' wide':'')+'"><img src="photos/'+p.f+'" alt="'+esc(e.t)+'のイメージ写真" loading="lazy">'+(voice?'<span class="voice">'+esc(e.v)+'</span>':'')+'</div>';
+}
+
+// photos/ に置かれていない画像は、文字の枠で表示する
+function boot(){
+  var pending = EXP.filter(function(e){ return e.ph && PHOTOS[e.ph].ai; });
+  var left = pending.length;
+  if(!left) return render();
+  pending.forEach(function(e){
+    var im = new Image();
+    im.onload = function(){ if(--left===0) render(); };
+    im.onerror = function(){ e.ph = null; if(--left===0) render(); };
+    im.src = 'photos/'+PHOTOS[e.ph].f;
+  });
+}
+function render(){
+  // 体験（写真のあるものを左右交互に）
+  document.getElementById('storyList').innerHTML = EXP.filter(function(e){return e.ph;}).map(function(e){
+    return '<article class="story">'+photo(e,'',true)+'<div class="st"><span class="who">'+WHO[e.who]+'</span><h3>'+esc(e.t)+'</h3><p>'+esc(e.d)+'</p>'+
+    '<div class="price"><b class="yen">年'+e.amt+'万円</b><span>の生前贈与から</span></div><button class="more" type="button" data-exp="'+e.id+'">必要な金額と特典を見る</button></div></article>';
+  }).join('');
+  // クレジット（AIで作った画像は1行にまとめる）
+  var usedAI = EXP.some(function(e){ return e.ph && PHOTOS[e.ph].ai; }) || PHOTOS.hero.ai;
+  document.getElementById('credits').innerHTML = Object.keys(PHOTOS).filter(function(k){return !PHOTOS[k].ai;}).map(function(k){var p=PHOTOS[k]; return '<li>Photo by '+esc(p.by)+' on <a href="'+p.u+'" target="_blank" rel="noopener">Unsplash</a></li>';}).join('') + (usedAI ? '<li>このページの写真は、画像生成AIで作成したイメージです。実在の人物ではありません。</li>' : '');
+  results();
+}
+
+// さがす
+var state={budget:110, cats:{}, who:'all', kw:'', sort:'up'};
+document.getElementById('cats').innerHTML = Object.keys(CATS).map(function(k){return '<button type="button" class="chip" data-cat="'+k+'" aria-pressed="false">'+CATS[k]+'</button>';}).join('');
+document.getElementById('whos').innerHTML = [['all','どちらも'],['g','おばあちゃん目線'],['k','おまごさん目線']].map(function(x){return '<button type="button" class="chip" data-who="'+x[0]+'" aria-pressed="'+(x[0]==='all')+'">'+x[1]+'</button>';}).join('');
+function results(){
+  var on=Object.keys(state.cats).filter(function(k){return state.cats[k];}), kw=state.kw.trim();
+  var r=EXP.filter(function(e){
+    return e.amt<=state.budget && (!on.length||on.indexOf(e.cat)>=0) && (state.who==='all'||e.who===state.who) && (!kw||(e.t+e.d+e.v+e.perk+CATS[e.cat]).indexOf(kw)>=0);
+  }).sort(function(a,b){return state.sort==='up'?a.amt-b.amt:b.amt-a.amt;});
+  document.getElementById('count').textContent=r.length+'件';
+  document.getElementById('results').innerHTML = r.length ? '<div class="grid">'+r.map(function(e){
+    return '<button class="card" type="button" data-exp="'+e.id+'">'+photo(e,'card')+'<h3>'+esc(e.t)+'</h3><div class="meta"><span>'+CATS[e.cat]+'</span><span>年<b class="yen">'+man(e.amt)+'</b>から</span></div></button>';
+  }).join('')+'</div>' : '<div class="empty">この条件の体験は、まだありません。金額を上げるか、絞り込みを外してみてください。</div>';
+}
+function setBudget(v){
+  state.budget=v; document.getElementById('bout').textContent=man(v);
+  document.getElementById('bperk').textContent='毎年の特典 約'+fmt(perk(v))+'円分'; results();
+}
+document.getElementById('budget').addEventListener('input',function(e){ setBudget(+e.target.value); });
+document.getElementById('kw').addEventListener('input',function(e){ state.kw=e.target.value; results(); });
+document.getElementById('sort').addEventListener('change',function(e){ state.sort=e.target.value; results(); });
+
+// しくみの表
+document.getElementById('tbl').innerHTML=[10,30,50,80,110].map(function(m){return '<tr><td class="yen">年'+man(m)+'</td><td class="yen r">'+fmt(div(m))+'円</td><td class="yen r">'+fmt(perk(m))+'円分</td><td class="yen r">'+man(m*5)+'</td></tr>';}).join('');
+
+// 詳細
+var dlg=document.getElementById('dlg');
+function open(id){
+  var e=find(id); if(!e) return;
+  dlg.innerHTML='<div class="dlg"><button class="close" type="button" data-close aria-label="閉じる">×</button>'+photo(e,'',false)+
+  '<div class="in"><span class="who" style="font-size:12.5px;letter-spacing:.14em;color:var(--warm);font-weight:700">'+WHO[e.who]+'・'+CATS[e.cat]+'</span>'+
+  '<h2 id="dlgTitle">'+esc(e.t)+'</h2><p class="voice">'+esc(e.v)+'</p><p>'+esc(e.d)+'</p>'+
+  '<div class="amount"><span>この体験の特典がつく、生前贈与の額</span><b class="yen">年'+e.amt+'<small>万円</small></b><span>おまごさん1人あたり。毎年の非課税枠（110万円）の中で始められます。</span></div>'+
+  '<h3>1年で、こうなります</h3><div class="flow"><div><span>贈与して運用</span><b class="yen">'+man(e.amt)+'</b><em>おまごさん名義</em></div><div><span>おまごさんの資産に</span><b class="yen">+'+fmt(div(e.amt))+'円</b><em>分配 年'+(YIELD-PERK)+'%</em></div><div class="hl"><span>体験の特典</span><b class="yen">'+fmt(perk(e.amt))+'円分</b><em>年'+PERK+'%相当</em></div></div>'+
+  '<h3>届く特典</h3><p>'+esc(e.perk)+'</p>'+
+  '<h3>5年続けると</h3><p>5歳から10歳までのゴールデンタイムに、毎年1回、合わせて5回の思い出。元本は合計<b class="yen">'+man(e.amt*5)+'</b>が、おまごさんに残ります。</p>'+
+  '<p class="note">利回り・特典はイメージです。特典は、運用先の実物資産（ホテル・商業施設など）や提携先から用意する想定です。</p></div></div>';
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+}
+dlg.addEventListener('click',function(ev){ if(ev.target===dlg||ev.target.closest('[data-close]')) dlg.close(); });
+document.addEventListener('click',function(ev){
+  var t=ev.target.closest('[data-exp],[data-cat],[data-who]'); if(!t) return;
+  if(t.hasAttribute('data-exp')) return open(t.getAttribute('data-exp'));
+  if(t.hasAttribute('data-cat')){ var k=t.getAttribute('data-cat'); state.cats[k]=!state.cats[k]; t.setAttribute('aria-pressed',state.cats[k]); return results(); }
+  if(t.hasAttribute('data-who')){ state.who=t.getAttribute('data-who'); document.querySelectorAll('[data-who]').forEach(function(b){b.setAttribute('aria-pressed',b===t);}); results(); }
+});
+boot();
+</script>
+</body>
+</html>
